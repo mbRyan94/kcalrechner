@@ -20,7 +20,7 @@ class Calculator extends Component {
       weight: null,
       gender: "female",
       height: null,
-      activityLevel: null,
+      activityLevel: "",
     };
   }
 
@@ -119,6 +119,10 @@ class Calculator extends Component {
             variant="outlined"
             className={classes.calcBodySizeInputField}
             onChange={this.addHeight}
+            error={isNaN(this.state?.height) ? true : false}
+            helperText={
+              isNaN(this.state?.height) ? "Bitte gebe eine Zahl an" : null
+            }
           />
           <Grid container className={classes.spacing} spacing={3}>
             <Grid item xs={6}>
@@ -129,6 +133,10 @@ class Calculator extends Component {
                 id="outlined-password-input"
                 label="Körpergewicht"
                 type="text"
+                error={isNaN(this.state?.weight) ? true : false}
+                helperText={
+                  isNaN(this.state?.weight) ? "Bitte gebe eine Zahl an" : null
+                }
                 variant="outlined"
                 className={classes.calcBodySizeInputField}
                 onChange={this.addWeight}
