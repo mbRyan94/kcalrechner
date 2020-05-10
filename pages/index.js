@@ -49,6 +49,10 @@ const useStyles = makeStyles((theme) => ({
     color: "#ffffff",
     fontWeight: 400,
     fontSize: "5rem",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "3.5rem",
+      marginTop: "10%",
+    },
   },
   calcHeaderText: {
     fontSize: "2.5rem",
