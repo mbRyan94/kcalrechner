@@ -11,6 +11,15 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import {
+  addWeight,
+  addActivityLevel,
+  addAge,
+  addGender,
+  addHeight,
+  addActiveKcal,
+} from "../redux/actions";
+import { connect } from "react-redux";
 
 class Calculator extends Component {
   constructor(props) {
@@ -36,6 +45,7 @@ class Calculator extends Component {
 
   handleChange = (event) => {
     const name = event.target.name;
+    this.props.addActivityLevel(event.target.value);
     this.setState({
       ...this.state,
       [name]: event.target.value,
@@ -44,6 +54,7 @@ class Calculator extends Component {
 
   addGender = (event) => {
     const gender = event.target.value;
+    this.props.addGender(gender);
     this.state = {
       ...this.state,
       gender,
@@ -52,6 +63,7 @@ class Calculator extends Component {
 
   addAge = (event) => {
     const age = event.target.value;
+    this.props.addAge(age);
     console.log("age: ", age);
     this.setState({
       ...this.state,
@@ -61,6 +73,7 @@ class Calculator extends Component {
 
   addHeight = (event) => {
     const height = event.target.value;
+    this.props.addHeight(height);
     this.setState({
       ...this.state,
       height,
@@ -69,6 +82,7 @@ class Calculator extends Component {
 
   addWeight = (event) => {
     const weight = event.target.value;
+    this.props.addWeight(weight);
     this.setState({
       ...this.state,
       weight,
@@ -76,29 +90,35 @@ class Calculator extends Component {
   };
 
   calcKcal = () => {
-    const { weight, age, height, gender, activityLevel } = this.state;
-
-    if (gender == "male") {
-      const baseMale = 66.47 + (13.7 * weight + 5 * height - 6.8 * age);
-      const activeKcal = baseMale * activityLevel;
-      this.setState({
-        ...this.state,
-        baseKcal: Math.floor(baseMale),
-        activeKcal: Math.floor(activeKcal),
-      });
-    } else {
-      const baseFemale = 655.1 + 9.6 * weight + 1.8 * height - 4.7 * age;
-      const activeKcal = baseFemale * activityLevel;
-      this.setState({
-        ...this.state,
-        baseKcal: Math.floor(baseFemale),
-        activeKcal: Math.floor(activeKcal),
-      });
+    //const { weight, age, height, gender, activityLevel } = this.state;
+    const { weight, age, height, gender, activityLevel } = this.props;
+    console.log(weight, age, height, gender, activityLevel);
+    if (weight && age && height && gender && activityLevel) {
+      if (gender == "male") {
+        const baseMale = 66.47 + (13.7 * weight + 5 * height - 6.8 * age);
+        const activeKcal = baseMale * activityLevel;
+        this.props.addActiveKcal(Math.floor(activeKcal));
+        this.setState({
+          ...this.state,
+          baseKcal: Math.floor(baseMale),
+          activeKcal: Math.floor(activeKcal),
+        });
+      } else {
+        const baseFemale = 655.1 + 9.6 * weight + 1.8 * height - 4.7 * age;
+        const activeKcal = baseFemale * activityLevel;
+        this.props.addActiveKcal(Math.floor(activeKcal));
+        this.setState({
+          ...this.state,
+          baseKcal: Math.floor(baseFemale),
+          activeKcal: Math.floor(activeKcal),
+        });
+      }
     }
   };
 
   render() {
     const { classes } = this.props;
+    console.log("props: ", this.props);
     return (
       <Card>
         <CardContent className={classes.calc}>
@@ -241,4 +261,26 @@ class Calculator extends Component {
   }
 }
 
-export default Calculator;
+const mapStateToProps = (state) => {
+  return {
+    weight: state?.weight,
+    height: state?.height,
+    age: state?.age,
+    gender: state?.gender,
+    activityLevel: state?.activityLevel,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    addWeight: (weight) => dispatch(addWeight(weight)),
+    addAge: (age) => dispatch(addAge(age)),
+    addHeight: (height) => dispatch(addHeight(height)),
+    addActivityLevel: (activityLevel) =>
+      dispatch(addActivityLevel(activityLevel)),
+    addGender: (gender) => dispatch(addGender(gender)),
+    addActiveKcal: (kcal) => dispatch(addActiveKcal(kcal)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Calculator);
