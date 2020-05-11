@@ -46,10 +46,10 @@ class Calculator extends Component {
   handleChange = (event) => {
     const name = event.target.name;
     this.props.addActivityLevel(event.target.value);
-    // this.setState({
-    //   ...this.state,
-    //   [name]: event.target.value,
-    // });
+    this.setState({
+      ...this.state,
+      [name]: event.target.value,
+    });
   };
 
   addGender = (event) => {
