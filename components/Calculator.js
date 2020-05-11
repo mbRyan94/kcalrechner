@@ -46,47 +46,47 @@ class Calculator extends Component {
   handleChange = (event) => {
     const name = event.target.name;
     this.props.addActivityLevel(event.target.value);
-    this.setState({
-      ...this.state,
-      [name]: event.target.value,
-    });
+    // this.setState({
+    //   ...this.state,
+    //   [name]: event.target.value,
+    // });
   };
 
   addGender = (event) => {
     const gender = event.target.value;
     this.props.addGender(gender);
-    this.state = {
-      ...this.state,
-      gender,
-    };
+    // this.state = {
+    //   ...this.state,
+    //   gender,
+    // };
   };
 
   addAge = (event) => {
     const age = event.target.value;
     this.props.addAge(age);
     console.log("age: ", age);
-    this.setState({
-      ...this.state,
-      age,
-    });
+    // this.setState({
+    //   ...this.state,
+    //   age,
+    // });
   };
 
   addHeight = (event) => {
     const height = event.target.value;
     this.props.addHeight(height);
-    this.setState({
-      ...this.state,
-      height,
-    });
+    // this.setState({
+    //   ...this.state,
+    //   height,
+    // });
   };
 
   addWeight = (event) => {
     const weight = event.target.value;
     this.props.addWeight(weight);
-    this.setState({
-      ...this.state,
-      weight,
-    });
+    // this.setState({
+    //   ...this.state,
+    //   weight,
+    // });
   };
 
   calcKcal = () => {
@@ -98,20 +98,20 @@ class Calculator extends Component {
         const baseMale = 66.47 + (13.7 * weight + 5 * height - 6.8 * age);
         const activeKcal = baseMale * activityLevel;
         this.props.addActiveKcal(Math.floor(activeKcal));
-        this.setState({
-          ...this.state,
-          baseKcal: Math.floor(baseMale),
-          activeKcal: Math.floor(activeKcal),
-        });
+        // this.setState({
+        //   ...this.state,
+        //   baseKcal: Math.floor(baseMale),
+        //   activeKcal: Math.floor(activeKcal),
+        // });
       } else {
         const baseFemale = 655.1 + 9.6 * weight + 1.8 * height - 4.7 * age;
         const activeKcal = baseFemale * activityLevel;
         this.props.addActiveKcal(Math.floor(activeKcal));
-        this.setState({
-          ...this.state,
-          baseKcal: Math.floor(baseFemale),
-          activeKcal: Math.floor(activeKcal),
-        });
+        // this.setState({
+        //   ...this.state,
+        //   baseKcal: Math.floor(baseFemale),
+        //   activeKcal: Math.floor(activeKcal),
+        // });
       }
     }
   };
@@ -232,10 +232,10 @@ class Calculator extends Component {
             className={(classes.spacing, classes.calcButton)}
             variant="contained"
             disabled={
-              this.state?.age &&
-              this.state?.weight &&
-              this.state?.height &&
-              this.state?.activityLevel
+              this.props?.age &&
+              this.props?.weight &&
+              this.props?.height &&
+              this.props?.activityLevel
                 ? false
                 : true
             }
@@ -251,8 +251,8 @@ class Calculator extends Component {
             variant="h6"
             gutterBottom
           >
-            {this.state?.activeKcal
-              ? `Dein Tagesbedarf liegt bei ${this.state?.activeKcal} Kcal`
+            {this.props?.activeKcal
+              ? `Dein Tagesbedarf liegt bei ${this.props?.activeKcal} Kcal`
               : null}
           </Typography>
         </CardContent>
@@ -268,6 +268,7 @@ const mapStateToProps = (state) => {
     age: state?.age,
     gender: state?.gender,
     activityLevel: state?.activityLevel,
+    activeKcal: state?.activeKcal,
   };
 };
 
