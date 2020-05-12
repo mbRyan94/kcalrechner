@@ -11,6 +11,7 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
+import { validateNumber } from "../utils/formValidation";
 import {
   addWeight,
   addActivityLevel,
@@ -117,7 +118,7 @@ class Calculator extends Component {
   };
 
   render() {
-    const { classes } = this.props;
+    const { classes, height, weight, age, gender, activityLevel } = this.props;
     console.log("props: ", this.props);
     return (
       <Card>
@@ -139,9 +140,9 @@ class Calculator extends Component {
             variant="outlined"
             className={classes.calcBodySizeInputField}
             onChange={this.addHeight}
-            error={isNaN(this.state?.height) ? true : false}
+            error={isNaN(this.props?.height) ? true : false}
             helperText={
-              isNaN(this.state?.height) ? "Bitte gebe eine Zahl an" : null
+              isNaN(this.props?.height) ? "Bitte gebe eine Zahl an" : null
             }
           />
           <Grid container className={classes.spacing} spacing={3}>
@@ -153,9 +154,9 @@ class Calculator extends Component {
                 id="outlined-password-input"
                 label="Körpergewicht"
                 type="text"
-                error={isNaN(this.state?.weight) ? true : false}
+                error={isNaN(this.props?.weight) ? true : false}
                 helperText={
-                  isNaN(this.state?.weight) ? "Bitte gebe eine Zahl an" : null
+                  isNaN(this.props?.weight) ? "Bitte gebe eine Zahl an" : null
                 }
                 variant="outlined"
                 className={classes.calcBodySizeInputField}
@@ -167,9 +168,9 @@ class Calculator extends Component {
                 Alter [Jahre]
               </Typography>
               <TextField
-                error={isNaN(this.state?.age) ? true : false}
+                error={isNaN(this.props?.age) ? true : false}
                 helperText={
-                  isNaN(this.state?.age) ? "Bitte geben Sie eine Zahl an" : null
+                  isNaN(this.props?.age) ? "Bitte geben Sie eine Zahl an" : null
                 }
                 id="outlined-password-input"
                 label="Alter"
@@ -233,9 +234,13 @@ class Calculator extends Component {
             variant="contained"
             disabled={
               this.props?.age &&
+              !isNaN(this.props?.age) &&
               this.props?.weight &&
+              !isNaN(this.props?.weight) &&
               this.props?.height &&
-              this.props?.activityLevel
+              !isNaN(this.props?.height) &&
+              this.props?.activityLevel &&
+              !isNaN(this.props?.activityLevel)
                 ? false
                 : true
             }
