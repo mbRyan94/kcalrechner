@@ -47,10 +47,10 @@ export const addGender = (gender) => {
   };
 };
 
-export const addActiveKcal = (kcal) => {
-  console.log("action activeKcal param: ", kcal);
+export const addActiveKcal = (activeKcal) => {
+  console.log("action activeKcal param: ", activeKcal);
   return {
     type: ADD_ACTIVE_KCAL,
-    payload: kcal,
+    payload: activeKcal,
   };
 };

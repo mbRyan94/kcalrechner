@@ -56,42 +56,25 @@ class Calculator extends Component {
   addGender = (event) => {
     const gender = event.target.value;
     this.props.addGender(gender);
-    // this.state = {
-    //   ...this.state,
-    //   gender,
-    // };
   };
 
   addAge = (event) => {
     const age = event.target.value;
     this.props.addAge(age);
     console.log("age: ", age);
-    // this.setState({
-    //   ...this.state,
-    //   age,
-    // });
   };
 
   addHeight = (event) => {
     const height = event.target.value;
     this.props.addHeight(height);
-    // this.setState({
-    //   ...this.state,
-    //   height,
-    // });
   };
 
   addWeight = (event) => {
     const weight = event.target.value;
     this.props.addWeight(weight);
-    // this.setState({
-    //   ...this.state,
-    //   weight,
-    // });
   };
 
   calcKcal = () => {
-    //const { weight, age, height, gender, activityLevel } = this.state;
     const { weight, age, height, gender, activityLevel } = this.props;
     console.log(weight, age, height, gender, activityLevel);
     if (weight && age && height && gender && activityLevel) {
@@ -99,26 +82,16 @@ class Calculator extends Component {
         const baseMale = 66.47 + (13.7 * weight + 5 * height - 6.8 * age);
         const activeKcal = baseMale * activityLevel;
         this.props.addActiveKcal(Math.floor(activeKcal));
-        // this.setState({
-        //   ...this.state,
-        //   baseKcal: Math.floor(baseMale),
-        //   activeKcal: Math.floor(activeKcal),
-        // });
       } else {
         const baseFemale = 655.1 + 9.6 * weight + 1.8 * height - 4.7 * age;
         const activeKcal = baseFemale * activityLevel;
         this.props.addActiveKcal(Math.floor(activeKcal));
-        // this.setState({
-        //   ...this.state,
-        //   baseKcal: Math.floor(baseFemale),
-        //   activeKcal: Math.floor(activeKcal),
-        // });
       }
     }
   };
 
   render() {
-    const { classes, height, weight, age, gender, activityLevel } = this.props;
+    const { classes } = this.props;
     console.log("props: ", this.props);
     return (
       <Card>
