@@ -88,8 +88,39 @@ const useStyles = makeStyles((theme) => ({
   },
   table: {
     minWidth: 200,
-    width: "80%",
-    margin: "0 auto",
+
+    margin: "5% auto 5% auto",
+  },
+  tableSection: {
+    margin: "10% auto 10% auto",
+    width: "90%",
+    [theme.breakpoints.up("sm")]: {
+      // marginTop: "550px",
+    },
+    [theme.breakpoints.up("xs")]: {
+      // marginTop: "450px",
+    },
+  },
+  tableSectionTitle: {
+    fontSize: "3.5rem",
+    margin: "5% 0 0 0",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "2.5rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "2.5rem",
+    },
+  },
+  tableSectionSubTitle: {
+    fontSize: "2.5rem",
+    color: "#424242",
+    margin: "1% 0 0 0 ",
+    [theme.breakpoints.down("sm")]: {
+      fontSize: "1.5rem",
+    },
+    [theme.breakpoints.down("xs")]: {
+      fontSize: "1.5rem",
+    },
   },
 }));
 
@@ -136,9 +167,14 @@ const Index = () => {
             </Container>
           </div>
         </div>
-        <div>
-          <h2>Test</h2>
-          <p>{tableIsVisible.toString()}</p>
+        <div className={classes.tableSection}>
+          <h2 className={classes.tableSectionTitle}>
+            Jedes Ziel braucht eine Basis.
+          </h2>
+          <p className={classes.tableSectionSubTitle}>
+            Egal ob du abnehmen, aufbauen oder dein Gewicht halten willst, wir
+            geben dir einen Richtwert, um dein Ziel zu erreichen.
+          </p>
           {tableIsVisible === true ? (
             <KcalTable classes={classes} />
           ) : (
