@@ -228,16 +228,6 @@ class Calculator extends Component {
           >
             Berechnen
           </Button>
-          <Typography
-            disabled={this.state?.activeKcal ? false : true}
-            className={classes.spacing}
-            variant="h6"
-            gutterBottom
-          >
-            {this.props?.activeKcal
-              ? `Dein Tagesbedarf liegt bei ${this.props?.activeKcal} Kcal`
-              : null}
-          </Typography>
         </CardContent>
       </Card>
     );
