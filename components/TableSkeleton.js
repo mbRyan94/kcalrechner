@@ -5,17 +5,25 @@ import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    width: "80%",
+    width: "100%",
     margin: "0 auto 20% auto",
   },
   skeletonTable: {
-    padding: "5% 0 5% 0",
-    margin: "0 auto",
+    padding: "2% 0 2% 0",
+    margin: "5% auto 5% auto",
   },
   skeletonRow: {
     margin: "0 auto",
   },
 }));
+
+const rowStyles = {
+  width: "95%",
+  height: 40,
+  firstRowHeight: {
+    height: 80,
+  },
+};
 
 export default function TableSkeleton() {
   const classes = useStyles();
@@ -25,44 +33,44 @@ export default function TableSkeleton() {
         <Skeleton
           className={classes.skeletonRow}
           variant="rect"
-          width={"80%"}
-          height={80}
+          width={rowStyles.width}
+          height={rowStyles.firstRowHeight.height}
         />
         <Skeleton
           className={classes.skeletonRow}
           variant="text"
-          width={"80%"}
-          height={40}
+          width={rowStyles.width}
+          height={rowStyles.height}
         />
         <Skeleton
           className={classes.skeletonRow}
           variant="text"
-          width={"80%"}
-          height={40}
+          width={rowStyles.width}
+          height={rowStyles.height}
         />
         <Skeleton
           className={classes.skeletonRow}
           variant="text"
-          width={"80%"}
-          height={40}
+          width={rowStyles.width}
+          height={rowStyles.height}
         />
         <Skeleton
           className={classes.skeletonRow}
           variant="text"
-          width={"80%"}
-          height={40}
+          width={rowStyles.width}
+          height={rowStyles.height}
         />
         <Skeleton
           className={classes.skeletonRow}
           variant="text"
-          width={"80%"}
-          height={40}
+          width={rowStyles.width}
+          height={rowStyles.height}
         />
         <Skeleton
           className={classes.skeletonRow}
           variant="text"
-          width={"80%"}
-          height={40}
+          width={rowStyles.width}
+          height={rowStyles.height}
         />
       </Paper>
     </div>
