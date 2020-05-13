@@ -11,7 +11,7 @@ import Button from "@material-ui/core/Button";
 import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
-import { validateNumber } from "../utils/formValidation";
+
 import {
   addWeight,
   addActivityLevel,
@@ -19,6 +19,7 @@ import {
   addGender,
   addHeight,
   addActiveKcal,
+  addBaseKcal,
 } from "../redux/actions";
 import { connect } from "react-redux";
 
@@ -81,12 +82,15 @@ class Calculator extends Component {
       if (gender == "male") {
         const baseMale = 66.47 + (13.7 * weight + 5 * height - 6.8 * age);
         const activeKcal = baseMale * activityLevel;
+        this.props.addBaseKcal(Math.floor(baseMale));
         this.props.addActiveKcal(Math.floor(activeKcal));
       } else {
         const baseFemale = 655.1 + 9.6 * weight + 1.8 * height - 4.7 * age;
         const activeKcal = baseFemale * activityLevel;
+        this.props.addBaseKcal(Math.floor(baseFemale));
         this.props.addActiveKcal(Math.floor(activeKcal));
       }
+      //this.props.onSetTableActive();
     }
   };
 
@@ -219,6 +223,7 @@ class Calculator extends Component {
             }
             onClick={() => {
               this.calcKcal();
+              this.props.onSetTableActive();
             }}
           >
             Berechnen
@@ -258,7 +263,8 @@ const mapDispatchToProps = (dispatch) => {
     addActivityLevel: (activityLevel) =>
       dispatch(addActivityLevel(activityLevel)),
     addGender: (gender) => dispatch(addGender(gender)),
-    addActiveKcal: (kcal) => dispatch(addActiveKcal(kcal)),
+    addActiveKcal: (activeKcal) => dispatch(addActiveKcal(activeKcal)),
+    addBaseKcal: (baseKcal) => dispatch(addBaseKcal(baseKcal)),
   };
 };
 
