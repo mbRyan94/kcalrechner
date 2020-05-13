@@ -93,15 +93,6 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const setTableActive = () => {
-  state.tableIsVisible = true;
-  console.log("state table: ", state.tableIsVisible);
-};
-
-const state = {
-  tableIsVisible: false,
-};
-
 const Index = () => {
   const [tableIsVisible, setTableVisibile] = useState(false);
 
@@ -110,7 +101,7 @@ const Index = () => {
   };
 
   const classes = useStyles();
-  console.log("state: ", state.tableIsVisible);
+
   return (
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="absolute">
