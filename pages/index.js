@@ -1,11 +1,15 @@
-import React from "react";
-import { Container } from "@material-ui/core";
+import React, { useState } from "react";
+import { Container, Tab } from "@material-ui/core";
 import Grid from "@material-ui/core/Grid";
 import { makeStyles } from "@material-ui/core/styles";
 import { Typography } from "@material-ui/core";
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
 import Calculator from "../components/Calculator";
+import KcalTable from "../components/KcalTable";
+import TableSkeleton from "../components/TableSkeleton";
+import Skeleton from "@material-ui/lab/Skeleton";
+
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
@@ -82,10 +86,31 @@ const useStyles = makeStyles((theme) => ({
   color: {
     color: theme.palette.secondary.main,
   },
+  table: {
+    minWidth: 200,
+    width: "80%",
+    margin: "0 auto",
+  },
 }));
 
+const setTableActive = () => {
+  state.tableIsVisible = true;
+  console.log("state table: ", state.tableIsVisible);
+};
+
+const state = {
+  tableIsVisible: false,
+};
+
 const Index = () => {
+  const [tableIsVisible, setTableVisibile] = useState(false);
+
+  const handleTableVisiblity = () => {
+    setTableVisibile(true);
+  };
+
   const classes = useStyles();
+  console.log("state: ", state.tableIsVisible);
   return (
     <div className={classes.root}>
       <AppBar className={classes.appbar} position="absolute">
@@ -111,11 +136,23 @@ const Index = () => {
                 </Grid>
 
                 <Grid item xs={12} md={6} className={classes.container}>
-                  <Calculator classes={classes} />
+                  <Calculator
+                    classes={classes}
+                    onSetTableActive={handleTableVisiblity}
+                  />
                 </Grid>
               </Grid>
             </Container>
           </div>
+        </div>
+        <div>
+          <h2>Test</h2>
+          <p>{tableIsVisible.toString()}</p>
+          {tableIsVisible === true ? (
+            <KcalTable classes={classes} />
+          ) : (
+            <TableSkeleton />
+          )}
         </div>
       </main>
     </div>
