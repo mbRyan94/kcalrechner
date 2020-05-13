@@ -15,6 +15,7 @@ import {
   ADD_HEIGHT,
   ADD_GENDER,
   ADD_ACTIVE_KCAL,
+  ADD_BASE_KCAL,
 } from "../redux/actions-types";
 
 const initialState = {
@@ -39,6 +40,8 @@ const reducer = (state = initialState, action) => {
       return { ...state, gender: action.payload };
     case ADD_ACTIVE_KCAL:
       return { ...state, activeKcal: action.payload };
+    case ADD_BASE_KCAL:
+      return { ...state, baseKcal: action.payload };
     default:
       return state;
   }
