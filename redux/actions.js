@@ -5,6 +5,7 @@ import {
   ADD_HEIGHT,
   ADD_GENDER,
   ADD_ACTIVE_KCAL,
+  ADD_BASE_KCAL,
 } from "./actions-types";
 
 export const addWeight = (weight) => {
@@ -52,5 +53,13 @@ export const addActiveKcal = (activeKcal) => {
   return {
     type: ADD_ACTIVE_KCAL,
     payload: activeKcal,
+  };
+};
+
+export const addBaseKcal = (baseKcal) => {
+  console.log("action baseKcal param: ", baseKcal);
+  return {
+    type: ADD_BASE_KCAL,
+    payload: baseKcal,
   };
 };
