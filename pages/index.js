@@ -94,11 +94,14 @@ const useStyles = makeStyles((theme) => ({
   tableSection: {
     margin: "10% auto 10% auto",
     width: "90%",
-    [theme.breakpoints.up("sm")]: {
+    [theme.breakpoints.down("sm")]: {
       // marginTop: "550px",
     },
-    [theme.breakpoints.up("xs")]: {
-      // marginTop: "450px",
+    [theme.breakpoints.between(0, 321)]: {
+      marginTop: "200%",
+    },
+    [theme.breakpoints.between(322, "xs")]: {
+      marginTop: "110%",
     },
   },
   tableSectionTitle: {
