@@ -89,7 +89,7 @@ const useStyles = makeStyles((theme) => ({
   table: {
     minWidth: 200,
 
-    margin: "5% auto 5% auto",
+    margin: "5% auto 0 auto",
   },
   tableSection: {
     margin: "10% auto 10% auto",
@@ -122,6 +122,19 @@ const useStyles = makeStyles((theme) => ({
       fontSize: "1.5rem",
     },
   },
+  span: {
+    fontWeight: "800",
+  },
+  h3: {
+    fontSize: "2.5rem",
+    marginBottom: 0,
+  },
+  p: {
+    fontSize: "1.5rem",
+  },
+  interpretation: {
+    marginTop: "5%",
+  },
 }));
 
 const Index = () => {
@@ -138,7 +151,7 @@ const Index = () => {
       <AppBar className={classes.appbar} position="absolute">
         <Toolbar>
           <Typography variant="h6" className={classes.title}>
-            lastminutebody
+            Kcal-Rechner
           </Typography>
         </Toolbar>
       </AppBar>
@@ -180,6 +193,68 @@ const Index = () => {
           ) : (
             <TableSkeleton />
           )}
+          <div className={classes.interpretation}>
+            <h3 className={classes.h3}>
+              Wie soll ich diese Werte interpretieren?
+            </h3>
+            <p className={classes.p}>
+              Bei den in der Tabelle genannten Werten handelt es sich um
+              Richtwerte, die dir initial helfen sollen, um deinen individuellen
+              Kcal-Bedarf zu ermitteln. Der Kcal-Rechner und die Kcal-Werte die
+              rauskommen, kannst du beispielsweise nutzen, um deine Diät zu
+              starten. Hierbei musst du zunächst verstehen, dass eine Diät,
+              anders als bei all den Buzz Words, die in den Medien fallen, kein
+              Hexenwerk ist.
+            </p>
+          </div>
+          <div className={classes.interpretation}>
+            <h3 className={classes.h3}>Wie geht es jetzt weiter?</h3>
+            <p className={classes.p}>
+              Die Frage ist nun, wie helfen dir diese Werte jetzt real weiter.
+              Wie in dem vorherigen Abschnitt angeschnitten, ist zunächst
+              wichtig zu verstehen, was eine Energiebilanz ist und was das mit
+              deinem Körper zutun hat. In einfachen Worten kannst du dir das so
+              vorstellen: <br />
+              <br />
+              Dein Körper benötigt eine bestimmte Menge an Energie am Tag, um
+              deinen Alltag zu bewältigen. Diese Energie wird typischerweise
+              über die Nahrungsaufnahme vollzogen. Isst du genau den
+              Kcal-Bedarf, den dein Körper dafür benötigt - entsprechend dem
+              vorgeschlagenen Aktivumsatz aus der Tabelle - hälst du dein
+              Gewicht. Solltest du deinem Körper jedoch weniger Energie zuführen
+              als er benötigt, entsteht ein Kcal-Defizit. Dieses Defizit muss
+              jedoch trotzdem gedeckt werden. Da du nicht genug Energie in Form
+              von Essen extern zuführst, holt sich dein Körper diese Energie aus
+              deinen internen Reserven. Korrekt, damit ist die Energie gemeint,
+              die in unseren Fettpölsterchen gespeichert ist.
+              <br />
+              <br /> Was heißt das jetzt genau? Durch einen Kcal-Defizit über
+              einen längeren Zeitraum nimmt man ab. So einfach ist es. Kein
+              Hokus Pokus, sondern ein kontrolliertes Kcal-Defizit über einen
+              längeren Zeitraum. <br />
+              <br />
+              Aber warum emphasiere ich, dass man sich damit Zeit lassen soll?
+              Immerhin will man ja in der Regel schnell Abnehmen... Ja, jedoch
+              willst du das doch bestimmt in einem kontrollierten, nachhaltigen
+              und nicht ungesunden Rahmen machen, oder? Bestimmt könnte man
+              schlussfolgern, dass man nur noch drei Trauben am Tag isst oder
+              von Luft und Liebe lebt, immerhin entspricht ein größeres Defizit
+              theoretisch auch zu mehr Gewichtsverlust, oder? <br />
+              <br />
+              Naja, das Ziel sollte immer sein gesund zu sein und sich dabei
+              wohl zu fühlen. Bei extremen Defiziten läuft man nur Gefahr, dass
+              einen nach wenigen Tagen die Heißhungerattacken übermannen, man
+              ständig hunger hat und somit auch die Laune in den Keller fällt.
+              Nachhaltig ist das leider nicht. Somit sollte man als normale,
+              nicht geübte Person, ein maximales Defizit von 500 Kcal fahren. In
+              der Theorie entspricht das einem Equivalent von einem halben Kilo
+              Fett. Aus dem Grund findest du in der Tabelle den Punkt
+              "Aggressive Diät", der genau dass berücksichtigt. <br />
+              <br />
+              Das Wichtigste dabei ist, wie in einem Projekt, konstant und
+              diszipliniert zu bleiben, dann erreichst du auch dein Ziel.
+            </p>
+          </div>
         </div>
       </main>
     </div>
