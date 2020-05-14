@@ -255,6 +255,11 @@ const Index = () => {
               Das Wichtigste dabei ist, wie in einem Projekt, konstant und
               diszipliniert zu bleiben, dann erreichst du auch dein Ziel.
             </p>
+            <p>
+              *Hinweis: Bei dieser Seite handelt es sich um ein persönliches
+              Hobbyprojekt, das sich noch im Aufbau befindet und zunächst für
+              den eigenen Gebrauch entwickelt wird.
+            </p>
           </div>
         </div>
       </main>
