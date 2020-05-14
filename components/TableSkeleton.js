@@ -6,7 +6,7 @@ import Paper from "@material-ui/core/Paper";
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
-    margin: "0 auto 20% auto",
+    margin: "0 auto 10% auto",
   },
   skeletonTable: {
     padding: "2% 0 2% 0",
