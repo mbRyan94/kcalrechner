@@ -54,101 +54,109 @@ class KcalTable extends Component {
     console.log("Table ActiveKcal Props: ", this.props);
 
     return (
-      <TableContainer className={classes?.table} component={Paper}>
-        <Table aria-label="simple table">
-          <TableHead>
-            <TableRow>
-              <TableCell>Bezeichung</TableCell>
-              <TableCell align="left">Kalorien</TableCell>
-              <TableCell align="left">Erklärung</TableCell>
-            </TableRow>
-          </TableHead>
-          <TableBody>
-            <TableRow key={1}>
-              <TableCell component="th" scope="row">
-                Grundumsatz
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {this.props?.baseKcal}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                Der Kalorienbedarf, den du benötigst, solltest du den ganzen Tag
-                nur im Bett liegen.
-              </TableCell>
-            </TableRow>
-            <TableRow key={2}>
-              <TableCell component="th" scope="row">
-                Aktivumsatz (Gewicht halten)
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {this.props?.activeKcal}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                Der Kalorienbedarf, den du benötigst, wenn du einen normalen Tag
-                gemäß der Aktivitätenangabe von oben erlebst.
-              </TableCell>
-            </TableRow>
-            <TableRow key={3}>
-              <TableCell component="th" scope="row">
-                Leichte Diät
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {this.props?.activeKcal
-                  ? this.calcLightDeficit(this.props?.activeKcal)
-                  : null}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                Der Kalorienbedarf, den du benötigst, solltest du eine
-                nachhaltige und entspannte Diät über einen längeren Zeitraum
-                anstreben.
-              </TableCell>
-            </TableRow>
-            <TableRow key={4}>
-              <TableCell component="th" scope="row">
-                Aggressive Diät
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {this.props?.activeKcal
-                  ? this.calcAggressivDeficit(this.props?.activeKcal)
-                  : null}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                Der Kalorienbedarf, den du benötigst, solltest du eine schnellen
-                Gewichtsverlust anstreben.
-              </TableCell>
-            </TableRow>
-            <TableRow key={5}>
-              <TableCell component="th" scope="row">
-                Aggressive Diät
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {this.props?.activeKcal
-                  ? this.calcLightSurplus(this.props?.activeKcal)
-                  : null}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                Der Kalorienbedarf, den du benötigst, solltest du eine
-                nachhaltig und kontrolliert Gewicht über einen längeren Zeitraum
-                aufbauen willst.
-              </TableCell>
-            </TableRow>
-            <TableRow key={6}>
-              <TableCell component="th" scope="row">
-                Aggressive Diät
-              </TableCell>
-              <TableCell component="th" scope="row">
-                {this.props?.activeKcal
-                  ? this.calcAggressivSurplus(this.props?.activeKcal)
-                  : null}
-              </TableCell>
-              <TableCell component="th" scope="row">
-                Der Kalorienbedarf, den du benötigst, solltest du eine schnell,
-                jedoch nicht unkontrolliert an Gewicht zunehmen willst.
-              </TableCell>
-            </TableRow>
-          </TableBody>
-        </Table>
-      </TableContainer>
+      <div>
+        <TableContainer className={classes?.table} component={Paper}>
+          <Table aria-label="simple table">
+            <TableHead>
+              <TableRow>
+                <TableCell>Bezeichung</TableCell>
+                <TableCell align="left">Kalorien</TableCell>
+                <TableCell align="left">Erklärung</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              <TableRow key={1}>
+                <TableCell component="th" scope="row">
+                  Grundumsatz
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {this.props?.baseKcal}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  Der Kalorienbedarf, den du benötigst, solltest du den ganzen
+                  Tag nur im Bett liegen.
+                </TableCell>
+              </TableRow>
+              <TableRow key={2}>
+                <TableCell component="th" scope="row">
+                  Aktivumsatz (Gewicht halten)
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {this.props?.activeKcal}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  Der Kalorienbedarf, den du benötigst, wenn du einen normalen
+                  Tag gemäß der Aktivitätenangabe von oben erlebst.
+                </TableCell>
+              </TableRow>
+              <TableRow key={3}>
+                <TableCell component="th" scope="row">
+                  Leichte Diät
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {this.props?.activeKcal
+                    ? this.calcLightDeficit(this.props?.activeKcal)
+                    : null}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  Der Kalorienbedarf, den du benötigst, solltest du eine
+                  nachhaltige und entspannte Diät über einen längeren Zeitraum
+                  anstreben.
+                </TableCell>
+              </TableRow>
+              <TableRow key={4}>
+                <TableCell component="th" scope="row">
+                  Aggressive Diät
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {this.props?.activeKcal
+                    ? this.calcAggressivDeficit(this.props?.activeKcal)
+                    : null}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  Der Kalorienbedarf, den du benötigst, solltest du eine
+                  schnellen Gewichtsverlust anstreben.
+                </TableCell>
+              </TableRow>
+              <TableRow key={5}>
+                <TableCell component="th" scope="row">
+                  Leichte Gewichtzunahme
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {this.props?.activeKcal
+                    ? this.calcLightSurplus(this.props?.activeKcal)
+                    : null}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  Der Kalorienbedarf, den du benötigst, solltest du eine
+                  nachhaltig und kontrolliert Gewicht über einen längeren
+                  Zeitraum aufbauen willst.
+                </TableCell>
+              </TableRow>
+              <TableRow key={6}>
+                <TableCell component="th" scope="row">
+                  Emphasierte Gewichtzunahme
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  {this.props?.activeKcal
+                    ? this.calcAggressivSurplus(this.props?.activeKcal)
+                    : null}
+                </TableCell>
+                <TableCell component="th" scope="row">
+                  Der Kalorienbedarf, den du benötigst, solltest du eine
+                  schnell, jedoch nicht unkontrolliert an Gewicht zunehmen
+                  willst.
+                </TableCell>
+              </TableRow>
+            </TableBody>
+          </Table>
+        </TableContainer>
+        <p>
+          <span className={classes.span}>*Hinweis: </span>Bei den in der Tabelle
+          dargestellten Werten handelt es sich um Schätzwerte, die dir als
+          Richtwert dienen sollen. Diese sind somit nicht zu 100% akurat.
+        </p>
+      </div>
     );
   }
 }
